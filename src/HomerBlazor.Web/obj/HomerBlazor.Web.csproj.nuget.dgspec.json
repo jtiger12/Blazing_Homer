@@ -133,9 +133,6 @@
             "projectReferences": {
               "C:\\src\\Blazing_Homer\\src\\HomerBlazor.Core\\HomerBlazor.Core.csproj": {
                 "projectPath": "C:\\src\\Blazing_Homer\\src\\HomerBlazor.Core\\HomerBlazor.Core.csproj"
-              },
-              "C:\\src\\Blazing_Homer\\src\\HomerBlazor.Shared\\HomerBlazor.Shared.csproj": {
-                "projectPath": "C:\\src\\Blazing_Homer\\src\\HomerBlazor.Shared\\HomerBlazor.Shared.csproj"
               }
             }
           }
@@ -156,21 +153,21 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "Microsoft.AspNetCore.Components": {
+            "Microsoft.AspNetCore.Components.Web": {
               "target": "Package",
-              "version": "[8.0.4, )"
+              "version": "[8.0.0, )"
             },
             "Microsoft.Extensions.Http": {
               "target": "Package",
               "version": "[8.0.0, )"
             },
-            "Polly": {
+            "Microsoft.Extensions.Logging.Abstractions": {
               "target": "Package",
-              "version": "[8.3.1, )"
+              "version": "[8.0.0, )"
             },
-            "Polly.Extensions.Http": {
+            "System.Text.Json": {
               "target": "Package",
-              "version": "[3.0.0, )"
+              "version": "[8.0.0, )"
             }
           },
           "imports": [

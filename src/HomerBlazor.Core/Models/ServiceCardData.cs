@@ -7,6 +7,10 @@ public class ServiceCardData
     public Dictionary<string, object> Data { get; set; } = new();
     public DateTime LastUpdated { get; set; } = DateTime.UtcNow;
     public TimeSpan? NextRefresh { get; set; }
+    public string? ErrorMessage { get; set; }
+    public bool HasError => !string.IsNullOrEmpty(ErrorMessage);
+    public DateTime LastChecked { get; set; } = DateTime.UtcNow;
+    public TimeSpan? ResponseTime { get; set; }
 }
 
 public enum ServiceStatus

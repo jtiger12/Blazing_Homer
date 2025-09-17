@@ -1,6 +1,9 @@
 using HomerBlazor.Core.Interfaces;
 using HomerBlazor.Core.Services;
 using HomerBlazor.Web.Components;
+using HomerBlazor.Web.Services;
+using HomerBlazor.ServiceCards.Services;
+using HomerBlazor.ServiceCards.Interfaces;
 using Microsoft.FluentUI.AspNetCore.Components;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Serilog;
@@ -30,6 +33,12 @@ builder.Services.Configure<ConfigurationOptions>(options =>
 });
 
 builder.Services.AddScoped<IConfigurationService, ConfigurationService>();
+
+// Add service card registry
+builder.Services.AddSingleton<IServiceCardRegistry, ServiceCardRegistry>();
+
+// Add JavaScript interop service
+builder.Services.AddScoped<IJSInteropService, JSInteropService>();
 
 // Add SignalR for real-time updates
 builder.Services.AddSignalR();

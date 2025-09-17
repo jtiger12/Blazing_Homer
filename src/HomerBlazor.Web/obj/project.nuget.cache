@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "dXEgGsYFXto=",
+  "dgSpecHash": "eLI5x4FdCpU=",
   "success": true,
   "projectFilePath": "C:\\src\\Blazing_Homer\\src\\HomerBlazor.Web\\HomerBlazor.Web.csproj",
   "expectedPackageFiles": [
@@ -73,9 +73,6 @@
     "C:\\Users\\jtige\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\jtige\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
     "C:\\Users\\jtige\\.nuget\\packages\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
-    "C:\\Users\\jtige\\.nuget\\packages\\polly\\8.3.1\\polly.8.3.1.nupkg.sha512",
-    "C:\\Users\\jtige\\.nuget\\packages\\polly.core\\8.3.1\\polly.core.8.3.1.nupkg.sha512",
-    "C:\\Users\\jtige\\.nuget\\packages\\polly.extensions.http\\3.0.0\\polly.extensions.http.3.0.0.nupkg.sha512",
     "C:\\Users\\jtige\\.nuget\\packages\\serilog\\3.1.1\\serilog.3.1.1.nupkg.sha512",
     "C:\\Users\\jtige\\.nuget\\packages\\serilog.aspnetcore\\8.0.0\\serilog.aspnetcore.8.0.0.nupkg.sha512",
     "C:\\Users\\jtige\\.nuget\\packages\\serilog.extensions.hosting\\8.0.0\\serilog.extensions.hosting.8.0.0.nupkg.sha512",

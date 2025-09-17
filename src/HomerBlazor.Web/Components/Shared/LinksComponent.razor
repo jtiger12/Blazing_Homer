@@ -1,0 +1,23 @@
+@using HomerBlazor.Core.Models
+
+@if (Config?.Links != null && Config.Links.Any())
+{
+    <div class="links-panel">
+        <div class="links-container">
+            @foreach (var link in Config.Links)
+            {
+                <a href="@link.Url" target="@link.Target" class="nav-link" title="@link.Name">
+                    @if (!string.IsNullOrEmpty(link.Icon))
+                    {
+                        <i class="@link.Icon"></i>
+                    }
+                    <span class="link-text">@link.Name</span>
+                </a>
+            }
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public DashboardConfig Config { get; set; } = new();
+}

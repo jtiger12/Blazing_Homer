@@ -1,0 +1,124 @@
+@using HomerBlazor.Core.Models
+@using HomerBlazor.Web.Services
+@inject IJSInteropService JSInterop
+
+<div class="theme-controls">
+    <div class="theme-selector">
+        <label for="theme-select">Theme:</label>
+        <select id="theme-select" @onchange="OnThemeChanged" value="@CurrentTheme">
+            <option value="default">Default</option>
+            <option value="walkxcode">Walkxcode</option>
+            <option value="neon">Neon</option>
+        </select>
+    </div>
+    
+    <div class="color-mode-toggle">
+        <button class="toggle-btn @(IsDarkMode ? "active" : "")" @onclick="ToggleColorMode">
+            <i class="fas @(IsDarkMode ? "fa-sun" : "fa-moon")"></i>
+            <span>@(IsDarkMode ? "Light" : "Dark")</span>
+        </button>
+    </div>
+</div>
+
+@code {
+    [Parameter] public DashboardConfig Config { get; set; } = new();
+    [Parameter] public EventCallback<string> ThemeChanged { get; set; }
+    [Parameter] public EventCallback<bool> ColorModeChanged { get; set; }
+
+    private string CurrentTheme { get; set; } = "default";
+    private bool IsDarkMode { get; set; } = false;
+    private bool _isInitialized = false;
+
+    protected override void OnInitialized()
+    {
+        CurrentTheme = Config.Theme ?? "default";
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender && !_isInitialized)
+        {
+            await InitializeThemeAsync();
+            _isInitialized = true;
+            StateHasChanged();
+        }
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (Config.Theme != CurrentTheme)
+        {
+            CurrentTheme = Config.Theme ?? "default";
+            
+            if (_isInitialized)
+            {
+                await ApplyTheme();
+            }
+        }
+    }
+
+    private async Task InitializeThemeAsync()
+    {
+        // Check for saved dark mode preference
+        IsDarkMode = await JSInterop.GetLocalStorageItemAsync<bool>("homer-dark-mode", false);
+        
+        // If no saved preference, check system preference
+        if (!IsDarkMode)
+        {
+            IsDarkMode = await JSInterop.InvokeAsync<bool>("window.matchMedia('(prefers-color-scheme: dark)').matches");
+        }
+
+        await ApplyTheme();
+    }
+
+    private async Task OnThemeChanged(ChangeEventArgs e)
+    {
+        CurrentTheme = e.Value?.ToString() ?? "default";
+        
+        if (_isInitialized)
+        {
+            await ApplyTheme();
+            await ThemeChanged.InvokeAsync(CurrentTheme);
+        }
+    }
+
+    private async Task ToggleColorMode()
+    {
+        if (!_isInitialized) return;
+        
+        IsDarkMode = !IsDarkMode;
+        await JSInterop.SetLocalStorageItemAsync("homer-dark-mode", IsDarkMode);
+        await ApplyTheme();
+        await ColorModeChanged.InvokeAsync(IsDarkMode);
+    }
+
+    private async Task ApplyTheme()
+    {
+        if (!_isInitialized) return;
+        
+        // Apply theme class to document
+        await JSInterop.InvokeVoidAsync("document.documentElement.setAttribute", "data-theme", CurrentTheme);
+        await JSInterop.InvokeVoidAsync("document.documentElement.setAttribute", "data-color-mode", IsDarkMode ? "dark" : "light");
+
+        // Apply CSS custom properties
+        await ApplyCssVariables();
+    }
+
+    private async Task ApplyCssVariables()
+    {
+        if (Config.Colors == null || !_isInitialized) return;
+
+        var colorSet = IsDarkMode ? Config.Colors.Dark : Config.Colors.Light;
+        if (colorSet == null) return;
+
+        var cssVariables = colorSet.Select(kvp => $"--{kvp.Key}: {kvp.Value};").ToArray();
+        var cssText = string.Join(" ", cssVariables);
+
+        await JSInterop.InvokeVoidAsync("eval", $@"
+            const style = document.getElementById('homer-theme-variables') || document.createElement('style');
+            style.id = 'homer-theme-variables';
+            style.textContent = ':root {{ {cssText} }}';
+            if (!style.parentNode) document.head.appendChild(style);
+        ");
+    }
+}

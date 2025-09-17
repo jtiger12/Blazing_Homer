@@ -1,10 +1,10 @@
-title: "BlazingHomer Dashboard"
-subtitle: "Welcome to your new dashboard!"
+title: "Terranova"
+subtitle: "Welcome to your new home!"
 documentTitle: "Homer"
 logo: "assets/logo.png"
 icon: "fas fa-home"
 header: true
-footer: '<p>Created with <span class="has-text-danger">❤️</span> with <a href="https://bulma.io/">bulma</a>, <a href="https://vuejs.org/">vuejs</a> & <a href="https://fontawesome.com/">font awesome</a> // Fork me on <a href="https://github.com/bastienwirtz/homer"><i class="fab fa-github-alt"></i></a></p>'
+footer: '<span class="footer-green">CUI</span>'
 columns: "auto"
 connectivityCheck: true
 theme: "default"

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HomerBlazor.Shared")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c64de08a38b238c30ce2215d750046bd18352081")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2a7e93e6b4ac2de571627276b5ff527f14be5d54")]
 [assembly: System.Reflection.AssemblyProductAttribute("HomerBlazor.Shared")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HomerBlazor.Shared")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,0 +1,82 @@
+@using HomerBlazor.Core.Models
+
+@if (Config?.Message != null && !string.IsNullOrEmpty(Config.Message.Content))
+{
+    <div class="message-panel @Config.Message.Style">
+        <div class="message-content">
+            @if (!string.IsNullOrEmpty(Config.Message.Icon))
+            {
+                <i class="@Config.Message.Icon message-icon"></i>
+            }
+            
+            <div class="message-text">
+                @if (!string.IsNullOrEmpty(Config.Message.Title))
+                {
+                    <h3 class="message-title">@Config.Message.Title</h3>
+                }
+                <div class="message-body">
+                    @((MarkupString)Config.Message.Content)
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public DashboardConfig Config { get; set; } = new();
+    
+    private Timer? _refreshTimer;
+    
+    protected override void OnInitialized()
+    {
+        if (Config.Message?.Refresh > 0 && !string.IsNullOrEmpty(Config.Message.Url))
+        {
+            _refreshTimer = new Timer(RefreshMessage, null, TimeSpan.Zero, TimeSpan.FromMilliseconds(Config.Message.Refresh));
+        }
+    }
+
+    private async void RefreshMessage(object? state)
+    {
+        if (Config.Message?.Url == null) return;
+        
+        try
+        {
+            using var client = new HttpClient();
+            var response = await client.GetStringAsync(Config.Message.Url);
+            
+            // Apply mapping if configured
+            if (Config.Message.Mapping != null && Config.Message.Mapping.Any())
+            {
+                var data = System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, object>>(response);
+                if (data != null)
+                {
+                    foreach (var mapping in Config.Message.Mapping)
+                    {
+                        if (data.TryGetValue(mapping.Key, out var value))
+                        {
+                            // Update message content based on mapping
+                            // This is a simplified implementation
+                            Config.Message.Content = value?.ToString() ?? "";
+                        }
+                    }
+                }
+            }
+            else
+            {
+                Config.Message.Content = response;
+            }
+            
+            await InvokeAsync(StateHasChanged);
+        }
+        catch (Exception ex)
+        {
+            // Log error silently - don't break the UI
+            Console.WriteLine($"Failed to refresh message: {ex.Message}");
+        }
+    }
+
+    public void Dispose()
+    {
+        _refreshTimer?.Dispose();
+    }
+}

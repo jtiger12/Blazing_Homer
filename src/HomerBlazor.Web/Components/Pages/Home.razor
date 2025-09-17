@@ -2,7 +2,7 @@
 @inject IConfigurationService ConfigService
 @using HomerBlazor.Core.Interfaces
 @using HomerBlazor.Core.Models
-@rendermode InteractiveServer
+@rendermode @(new InteractiveServerRenderMode(prerender: false))
 
 <PageTitle>@(_config?.Title ?? "Terranova Dashboard")</PageTitle>
 
@@ -31,11 +31,20 @@
                             }
                         </div>
                     </div>
-                    
-                    <SearchComponent @bind-SearchTerm="@_searchTerm" />
+
+                    <div class="header-controls">
+                        <SearchComponent @bind-SearchTerm="@_searchTerm" />
+                        <ThemeComponent Config="@_config" ThemeChanged="OnThemeChanged" ColorModeChanged="OnColorModeChanged" />
+                    </div>
+
+                    <!-- Links panel -->
+                    <LinksComponent Config="@_config" />
                 </div>
             </header>
         }
+
+        <!-- Message panel -->
+        <MessageComponent Config="@_config" />
 
         <main class="dashboard-main">
             <div class="container">
@@ -126,6 +135,21 @@
     private void OnConfigurationChanged(object? sender, DashboardConfig newConfig)
     {
         _config = newConfig;
+        InvokeAsync(StateHasChanged);
+    }
+
+    private void OnThemeChanged(string theme)
+    {
+        if (_config != null)
+        {
+            _config.Theme = theme;
+            InvokeAsync(StateHasChanged);
+        }
+    }
+
+    private void OnColorModeChanged(bool isDarkMode)
+    {
+        // Color mode is handled by the ThemeComponent
         InvokeAsync(StateHasChanged);
     }
 

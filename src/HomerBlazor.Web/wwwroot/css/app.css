@@ -45,6 +45,16 @@ body {
     padding: 0 20px;
 }
 
+/* Custom utility class for bold green background text */
+.footer-green {
+    font-weight: bold;
+    font-size: 14pt;
+    background-color: green;
+    color: white; /* Added white text for better contrast on green background */
+    padding: 2px 4px; /* Added some padding for better appearance */
+    border-radius: 4px; /* Added slight border radius */
+}
+
 /* Dashboard Layout */
 .homer-dashboard {
     min-height: 100vh;
@@ -337,7 +347,7 @@ body {
 
 /* Footer */
 .dashboard-footer {
-    background: var(--card-background);
+    /*background: var(--card-background);*/
     border-top: 1px solid var(--border-color);
     padding: 1rem 0;
     text-align: center;

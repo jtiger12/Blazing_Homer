@@ -43,9 +43,6 @@ C:\src\Blazing_Homer\src\HomerBlazor.Web\bin\Debug\net8.0\Microsoft.FluentUI.Asp
 C:\src\Blazing_Homer\src\HomerBlazor.Web\bin\Debug\net8.0\Microsoft.JSInterop.dll
 C:\src\Blazing_Homer\src\HomerBlazor.Web\bin\Debug\net8.0\Mono.TextTemplating.dll
 C:\src\Blazing_Homer\src\HomerBlazor.Web\bin\Debug\net8.0\Newtonsoft.Json.dll
-C:\src\Blazing_Homer\src\HomerBlazor.Web\bin\Debug\net8.0\Polly.dll
-C:\src\Blazing_Homer\src\HomerBlazor.Web\bin\Debug\net8.0\Polly.Core.dll
-C:\src\Blazing_Homer\src\HomerBlazor.Web\bin\Debug\net8.0\Polly.Extensions.Http.dll
 C:\src\Blazing_Homer\src\HomerBlazor.Web\bin\Debug\net8.0\Serilog.dll
 C:\src\Blazing_Homer\src\HomerBlazor.Web\bin\Debug\net8.0\Serilog.AspNetCore.dll
 C:\src\Blazing_Homer\src\HomerBlazor.Web\bin\Debug\net8.0\Serilog.Extensions.Hosting.dll
@@ -161,3 +158,4 @@ C:\src\Blazing_Homer\src\HomerBlazor.Web\obj\Debug\net8.0\HomerBlazor.Web.pdb
 C:\src\Blazing_Homer\src\HomerBlazor.Web\obj\Debug\net8.0\HomerBlazor.Web.genruntimeconfig.cache
 C:\src\Blazing_Homer\src\HomerBlazor.Web\obj\Debug\net8.0\ref\HomerBlazor.Web.dll
 C:\src\Blazing_Homer\src\HomerBlazor.Web\obj\Debug\net8.0\swae.build.ex.cache
+C:\src\Blazing_Homer\src\HomerBlazor.Web\bin\Debug\net8.0\HomerBlazor.ServiceCards.staticwebassets.endpoints.json

@@ -1,0 +1,51 @@
+2025-09-17 15:10:51.535 -04:00 [INF] Configuration loaded successfully from config/config.yml
+2025-09-17 15:10:52.079 -04:00 [INF] Configuration loaded successfully from config/config.yml
+2025-09-17 15:10:52.219 -04:00 [ERR] JavaScript interop failed for window.matchMedia('(prefers-color-scheme: dark)').matches
+Microsoft.JSInterop.JSException: Could not find 'window.matchMedia('(prefers-color-scheme: dark)').matches' ('matchMedia('(prefers-color-scheme: dark)')' was undefined).
+Error: Could not find 'window.matchMedia('(prefers-color-scheme: dark)').matches' ('matchMedia('(prefers-color-scheme: dark)')' was undefined).
+    at https://localhost:61384/_framework/blazor.web.js:1:537
+    at Array.forEach (<anonymous>)
+    at l.findFunction (https://localhost:61384/_framework/blazor.web.js:1:505)
+    at b (https://localhost:61384/_framework/blazor.web.js:1:5248)
+    at https://localhost:61384/_framework/blazor.web.js:1:3041
+    at new Promise (<anonymous>)
+    at y.beginInvokeJSFromDotNet (https://localhost:61384/_framework/blazor.web.js:1:3004)
+    at gn._invokeClientMethod (https://localhost:61384/_framework/blazor.web.js:1:62730)
+    at gn._processIncomingData (https://localhost:61384/_framework/blazor.web.js:1:60119)
+    at xn.onreceive (https://localhost:61384/_framework/blazor.web.js:1:53760)
+   at Microsoft.JSInterop.JSRuntime.InvokeAsync[TValue](Int64 targetInstanceId, String identifier, Object[] args)
+   at HomerBlazor.Web.Services.JSInteropService.InvokeAsync[T](String identifier, Object[] args) in C:\src\Blazing_Homer\src\HomerBlazor.Web\Services\JSInteropService.cs:line 55
+2025-09-17 15:12:39.716 -04:00 [INF] Configuration loaded successfully from config/config.yml
+2025-09-17 15:12:39.983 -04:00 [INF] Configuration loaded successfully from config/config.yml
+2025-09-17 15:12:40.045 -04:00 [ERR] JavaScript interop failed for window.matchMedia('(prefers-color-scheme: dark)').matches
+Microsoft.JSInterop.JSException: Could not find 'window.matchMedia('(prefers-color-scheme: dark)').matches' ('matchMedia('(prefers-color-scheme: dark)')' was undefined).
+Error: Could not find 'window.matchMedia('(prefers-color-scheme: dark)').matches' ('matchMedia('(prefers-color-scheme: dark)')' was undefined).
+    at https://localhost:61384/_framework/blazor.web.js:1:537
+    at Array.forEach (<anonymous>)
+    at l.findFunction (https://localhost:61384/_framework/blazor.web.js:1:505)
+    at b (https://localhost:61384/_framework/blazor.web.js:1:5248)
+    at https://localhost:61384/_framework/blazor.web.js:1:3041
+    at new Promise (<anonymous>)
+    at y.beginInvokeJSFromDotNet (https://localhost:61384/_framework/blazor.web.js:1:3004)
+    at gn._invokeClientMethod (https://localhost:61384/_framework/blazor.web.js:1:62730)
+    at gn._processIncomingData (https://localhost:61384/_framework/blazor.web.js:1:60119)
+    at xn.onreceive (https://localhost:61384/_framework/blazor.web.js:1:53760)
+   at Microsoft.JSInterop.JSRuntime.InvokeAsync[TValue](Int64 targetInstanceId, String identifier, Object[] args)
+   at HomerBlazor.Web.Services.JSInteropService.InvokeAsync[T](String identifier, Object[] args) in C:\src\Blazing_Homer\src\HomerBlazor.Web\Services\JSInteropService.cs:line 55
+[2025-09-17 15:13:50.830 -04:00 INF] Configuration loaded successfully from config/config.yml {"SourceContext":"HomerBlazor.Core.Services.ConfigurationService","RequestId":"0HNFM3PAL1HGP:00000001","RequestPath":"/","ConnectionId":"0HNFM3PAL1HGP"}
+[2025-09-17 15:13:51.424 -04:00 INF] Configuration loaded successfully from config/config.yml {"SourceContext":"HomerBlazor.Core.Services.ConfigurationService","TransportConnectionId":"NQEuBt5SYw7lLpuzY5hhqg","RequestId":"0HNFM3PAL1HGP:0000000F","RequestPath":"/_blazor","ConnectionId":"0HNFM3PAL1HGP"}
+[2025-09-17 15:13:51.553 -04:00 ERR] JavaScript interop failed for window.matchMedia('(prefers-color-scheme: dark)').matches {"SourceContext":"HomerBlazor.Web.Services.JSInteropService","TransportConnectionId":"NQEuBt5SYw7lLpuzY5hhqg","RequestId":"0HNFM3PAL1HGP:0000000F","RequestPath":"/_blazor","ConnectionId":"0HNFM3PAL1HGP"}
+Microsoft.JSInterop.JSException: Could not find 'window.matchMedia('(prefers-color-scheme: dark)').matches' ('matchMedia('(prefers-color-scheme: dark)')' was undefined).
+Error: Could not find 'window.matchMedia('(prefers-color-scheme: dark)').matches' ('matchMedia('(prefers-color-scheme: dark)')' was undefined).
+    at https://localhost:61384/_framework/blazor.web.js:1:537
+    at Array.forEach (<anonymous>)
+    at l.findFunction (https://localhost:61384/_framework/blazor.web.js:1:505)
+    at b (https://localhost:61384/_framework/blazor.web.js:1:5248)
+    at https://localhost:61384/_framework/blazor.web.js:1:3041
+    at new Promise (<anonymous>)
+    at y.beginInvokeJSFromDotNet (https://localhost:61384/_framework/blazor.web.js:1:3004)
+    at gn._invokeClientMethod (https://localhost:61384/_framework/blazor.web.js:1:62730)
+    at gn._processIncomingData (https://localhost:61384/_framework/blazor.web.js:1:60119)
+    at connection.onreceive (https://localhost:61384/_framework/blazor.web.js:1:53760)
+   at Microsoft.JSInterop.JSRuntime.InvokeAsync[TValue](Int64 targetInstanceId, String identifier, Object[] args)
+   at HomerBlazor.Web.Services.JSInteropService.InvokeAsync[T](String identifier, Object[] args) in C:\src\Blazing_Homer\src\HomerBlazor.Web\Services\JSInteropService.cs:line 55

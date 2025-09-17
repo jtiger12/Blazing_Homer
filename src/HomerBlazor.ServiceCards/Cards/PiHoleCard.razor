@@ -1,0 +1,100 @@
+@using HomerBlazor.Core.Models
+@using HomerBlazor.ServiceCards.Base
+@using Microsoft.Extensions.Logging
+@inherits BaseServiceCard
+
+@code {
+    public override string CardType => "PiHole";
+
+    protected override RenderFragment RenderCardContent(ServiceItem config, ServiceCardData data) => __builder =>
+    {
+        <div class="pihole-card">
+            <div class="card-header">
+                <div class="service-info">
+                    <h3 class="service-name">@config.Name</h3>
+                    @if (!string.IsNullOrEmpty(config.Subtitle))
+                    {
+                        <p class="service-subtitle">@config.Subtitle</p>
+                    }
+                </div>
+                <div class="service-status @data.Status.GetCssClass()">
+                    <i class="fas fa-circle status-indicator"></i>
+                    <span>@data.Status.GetDisplayText()</span>
+                </div>
+            </div>
+            
+            @if (data.Data.Any())
+            {
+                <div class="pihole-stats">
+                    @if (data.Data.TryGetValue("queries_today", out var queries))
+                    {
+                        <div class="stat-item">
+                            <span class="stat-label">Queries Today</span>
+                            <span class="stat-value">@queries</span>
+                        </div>
+                    }
+                    @if (data.Data.TryGetValue("ads_blocked_today", out var blocked))
+                    {
+                        <div class="stat-item">
+                            <span class="stat-label">Blocked Today</span>
+                            <span class="stat-value">@blocked</span>
+                        </div>
+                    }
+                    @if (data.Data.TryGetValue("ads_percentage_today", out var percentage))
+                    {
+                        <div class="stat-item">
+                            <span class="stat-label">% Blocked</span>
+                            <span class="stat-value">@percentage%</span>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    };
+
+    public override async Task<ServiceCardData> GetCardDataAsync(ServiceItem config, CancellationToken cancellationToken)
+    {
+        var cardData = new ServiceCardData();
+        
+        try
+        {
+            if (string.IsNullOrEmpty(config.Endpoint))
+            {
+                throw new InvalidOperationException("PiHole endpoint not configured");
+            }
+
+            var endpoint = $"{config.Endpoint.TrimEnd('/')}/admin/api.php";
+            var data = await GetAsync<PiHoleResponse>(endpoint, cancellationToken);
+            
+            cardData.Status = data.Status == "enabled" ? ServiceStatus.Online : ServiceStatus.Warning;
+            cardData.StatusMessage = $"PiHole is {data.Status}";
+            cardData.LastChecked = DateTime.UtcNow;
+
+            cardData.Data = new Dictionary<string, object>
+            {
+                ["queries_today"] = data.DnsQueriesToday?.ToString("N0") ?? "0",
+                ["ads_blocked_today"] = data.AdsBlockedToday?.ToString("N0") ?? "0", 
+                ["ads_percentage_today"] = data.AdsPercentageToday?.ToString("F1") ?? "0.0"
+            };
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex, "Failed to fetch PiHole data from {Endpoint}", config.Endpoint);
+            
+            cardData.Status = ServiceStatus.Offline;
+            cardData.StatusMessage = "Unable to connect to PiHole";
+            cardData.LastChecked = DateTime.UtcNow;
+            cardData.ErrorMessage = ex.Message;
+        }
+
+        return cardData;
+    }
+
+    private class PiHoleResponse
+    {
+        public string Status { get; set; } = "";
+        public int? DnsQueriesToday { get; set; }
+        public int? AdsBlockedToday { get; set; }
+        public double? AdsPercentageToday { get; set; }
+    }
+}
