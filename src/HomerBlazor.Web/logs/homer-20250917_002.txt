@@ -1,3 +1,8 @@
 2025-09-17 14:42:31.787 -04:00 [INF] Configuration loaded successfully from config/config.yml
 2025-09-17 14:42:31.852 -04:00 [INF] Configuration loaded successfully from config/config.yml
 2025-09-17 14:42:32.876 -04:00 [INF] Configuration loaded successfully from config/config.yml
+2025-09-17 14:48:00.139 -04:00 [INF] Configuration loaded successfully from config/config.yml
+2025-09-17 14:48:00.147 -04:00 [INF] Configuration loaded successfully from config/config.yml
+2025-09-17 14:48:35.229 -04:00 [INF] Configuration loaded successfully from config/config.yml
+2025-09-17 14:48:35.235 -04:00 [INF] Configuration loaded successfully from config/config.yml
+2025-09-17 14:48:35.593 -04:00 [INF] Configuration loaded successfully from config/config.yml

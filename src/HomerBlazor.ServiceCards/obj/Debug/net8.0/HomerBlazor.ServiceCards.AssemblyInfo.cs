@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HomerBlazor.ServiceCards")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ddaa5217129a1ec1ae1f1719cd5b09255b6961ca")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c64de08a38b238c30ce2215d750046bd18352081")]
 [assembly: System.Reflection.AssemblyProductAttribute("HomerBlazor.ServiceCards")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HomerBlazor.ServiceCards")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
