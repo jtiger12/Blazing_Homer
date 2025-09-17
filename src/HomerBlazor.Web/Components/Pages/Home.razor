@@ -1,0 +1,139 @@
+@page "/"
+@inject IConfigurationService ConfigService
+@using HomerBlazor.Core.Interfaces
+@using HomerBlazor.Core.Models
+@rendermode InteractiveServer
+
+<PageTitle>@(_config?.Title ?? "Terranova Dashboard")</PageTitle>
+
+<div class="homer-dashboard" data-theme="@(_config?.Theme ?? "default")">
+    @if (_config != null)
+    {
+        @if (_config.Header)
+        {
+            <header class="dashboard-header">
+                <div class="container">
+                    <div class="header-content">
+                        @if (!string.IsNullOrEmpty(_config.Logo))
+                        {
+                            <img src="@_config.Logo" alt="Logo" class="logo" />
+                        }
+                        else if (!string.IsNullOrEmpty(_config.Icon))
+                        {
+                            <i class="@_config.Icon logo-icon"></i>
+                        }
+                        
+                        <div class="header-text">
+                            <h1 class="title">@_config.Title</h1>
+                            @if (!string.IsNullOrEmpty(_config.Subtitle))
+                            {
+                                <p class="subtitle">@_config.Subtitle</p>
+                            }
+                        </div>
+                    </div>
+                    
+                    <SearchComponent @bind-SearchTerm="@_searchTerm" />
+                </div>
+            </header>
+        }
+
+        <main class="dashboard-main">
+            <div class="container">
+                <div class="services-grid" data-columns="@_config.Columns">
+                    @foreach (var group in FilteredServices)
+                    {
+                        <ServiceGroupComponent Group="@group" SearchTerm="@_searchTerm" />
+                    }
+                </div>
+            </div>
+        </main>
+
+        @if (!string.IsNullOrEmpty(_config.Footer))
+        {
+            <footer class="dashboard-footer">
+                <div class="container">
+                    @((MarkupString)_config.Footer)
+                </div>
+            </footer>
+        }
+    }
+    else
+    {
+        <div class="loading-container">
+            <div class="loading-spinner">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>Loading dashboard...</p>
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    private DashboardConfig? _config;
+    private string _searchTerm = string.Empty;
+
+    private IEnumerable<ServiceGroup> FilteredServices
+    {
+        get
+        {
+            if (_config?.Services == null)
+                return Enumerable.Empty<ServiceGroup>();
+
+            if (string.IsNullOrWhiteSpace(_searchTerm))
+                return _config.Services;
+
+            var searchLower = _searchTerm.ToLowerInvariant();
+            
+            return _config.Services
+                .Select(group => new ServiceGroup
+                {
+                    Name = group.Name,
+                    Icon = group.Icon,
+                    Logo = group.Logo,
+                    Class = group.Class,
+                    Items = group.Items
+                        .Where(item => 
+                            item.Name.ToLowerInvariant().Contains(searchLower) ||
+                            (item.Subtitle?.ToLowerInvariant().Contains(searchLower) ?? false) ||
+                            (item.Keywords?.ToLowerInvariant().Contains(searchLower) ?? false) ||
+                            (item.Tag?.ToLowerInvariant().Contains(searchLower) ?? false))
+                        .ToList()
+                })
+                .Where(group => group.Items.Any())
+                .ToList();
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            _config = await ConfigService.GetConfigurationAsync();
+            ConfigService.ConfigurationChanged += OnConfigurationChanged;
+        }
+        catch (Exception ex)
+        {
+            // Log error - for now create a default config
+            _config = new DashboardConfig
+            {
+                Title = "Homer Dashboard",
+                Subtitle = "Configuration Error - Using Default",
+                Services = new List<ServiceGroup>()
+            };
+        }
+    }
+
+    private void OnConfigurationChanged(object? sender, DashboardConfig newConfig)
+    {
+        _config = newConfig;
+        InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        if (ConfigService != null)
+        {
+            ConfigService.ConfigurationChanged -= OnConfigurationChanged;
+        }
+    }
+}

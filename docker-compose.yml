@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  homer-blazor:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: homer-blazor
+    ports:
+      - "8080:8080"
+    volumes:
+      # Mount configuration directory
+      - ./config:/app/config:ro
+      # Mount assets directory for custom logos/images
+      - ./assets:/app/wwwroot/assets:ro
+      # Mount logs directory (optional)
+      - ./logs:/app/logs
+      # Mount data directory for database (if using SQLite)
+      - ./data:/app/data
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:8080
+      - Homer__ConfigPath=/app/config/config.yml
+      # Uncomment and configure if using a database
+      # - ConnectionStrings__DefaultConnection=Data Source=/app/data/homer.db
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Optional: Add a reverse proxy like Traefik or nginx
+  # nginx:
+  #   image: nginx:alpine
+  #   container_name: homer-nginx
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   volumes:
+  #     - ./nginx.conf:/etc/nginx/nginx.conf:ro
+  #     - ./ssl:/etc/nginx/ssl:ro
+  #   depends_on:
+  #     - homer-blazor
+  #   restart: unless-stopped
+
+networks:
+  default:
+    name: homer-network

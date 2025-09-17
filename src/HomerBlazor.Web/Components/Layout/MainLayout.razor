@@ -1,0 +1,27 @@
+@inherits LayoutComponentBase
+@inject IConfigurationService ConfigService
+@using HomerBlazor.Core.Interfaces
+@using HomerBlazor.Core.Models
+
+<div class="page">
+    <main>
+        @Body
+    </main>
+</div>
+
+@code {
+    private DashboardConfig? _config;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            _config = await ConfigService.GetConfigurationAsync();
+        }
+        catch (Exception ex)
+        {
+            // Log error and use default config
+            _config = new DashboardConfig();
+        }
+    }
+}

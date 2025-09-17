@@ -1,0 +1,27 @@
+@using HomerBlazor.Core.Models
+
+<div class="service-group @Group.Class">
+    <div class="group-header">
+        @if (!string.IsNullOrEmpty(Group.Logo))
+        {
+            <img src="@Group.Logo" alt="@Group.Name" class="group-logo" />
+        }
+        else if (!string.IsNullOrEmpty(Group.Icon))
+        {
+            <i class="@Group.Icon group-icon"></i>
+        }
+        <h2 class="group-title">@Group.Name</h2>
+    </div>
+
+    <div class="service-items">
+        @foreach (var item in Group.Items)
+        {
+            <ServiceCardComponent Item="@item" />
+        }
+    </div>
+</div>
+
+@code {
+    [Parameter] public ServiceGroup Group { get; set; } = new();
+    [Parameter] public string SearchTerm { get; set; } = string.Empty;
+}

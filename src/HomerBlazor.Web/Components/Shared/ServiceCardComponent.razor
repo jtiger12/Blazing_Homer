@@ -1,0 +1,63 @@
+@using HomerBlazor.Core.Models
+
+<div class="service-card @Item.Class" style="@GetCardStyle()">
+    <a href="@Item.Url" target="@Item.Target" class="card-link">
+        <div class="card-content">
+            <div class="card-header">
+                <div class="card-icon">
+                    @if (!string.IsNullOrEmpty(Item.Logo))
+                    {
+                        <img src="@Item.Logo" alt="@Item.Name" class="service-logo" />
+                    }
+                    else if (!string.IsNullOrEmpty(Item.Icon))
+                    {
+                        <i class="@Item.Icon service-icon"></i>
+                    }
+                    else
+                    {
+                        <i class="fas fa-globe service-icon"></i>
+                    }
+                </div>
+                
+                @if (!string.IsNullOrEmpty(Item.Tag))
+                {
+                    <div class="card-tag @Item.TagStyle">@Item.Tag</div>
+                }
+            </div>
+
+            <div class="card-body">
+                <h3 class="card-title">@Item.Name</h3>
+                @if (!string.IsNullOrEmpty(Item.Subtitle))
+                {
+                    <p class="card-subtitle">@Item.Subtitle</p>
+                }
+            </div>
+
+            @if (!string.IsNullOrEmpty(Item.Type))
+            {
+                <div class="card-footer">
+                    <div class="service-status">
+                        <i class="fas fa-circle status-indicator status-unknown"></i>
+                        <span class="status-text">Loading...</span>
+                    </div>
+                </div>
+            }
+        </div>
+    </a>
+</div>
+
+@code {
+    [Parameter] public ServiceItem Item { get; set; } = new();
+
+    private string GetCardStyle()
+    {
+        var styles = new List<string>();
+        
+        if (!string.IsNullOrEmpty(Item.Background))
+        {
+            styles.Add($"background: {Item.Background}");
+        }
+        
+        return string.Join("; ", styles);
+    }
+}

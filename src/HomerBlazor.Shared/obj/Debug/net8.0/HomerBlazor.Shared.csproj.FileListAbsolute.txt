@@ -1,0 +1,16 @@
+C:\src\Blazing_Homer\src\HomerBlazor.Shared\bin\Debug\net8.0\HomerBlazor.Shared.deps.json
+C:\src\Blazing_Homer\src\HomerBlazor.Shared\bin\Debug\net8.0\HomerBlazor.Shared.dll
+C:\src\Blazing_Homer\src\HomerBlazor.Shared\bin\Debug\net8.0\HomerBlazor.Shared.pdb
+C:\src\Blazing_Homer\src\HomerBlazor.Shared\bin\Debug\net8.0\HomerBlazor.Core.dll
+C:\src\Blazing_Homer\src\HomerBlazor.Shared\bin\Debug\net8.0\HomerBlazor.Core.pdb
+C:\src\Blazing_Homer\src\HomerBlazor.Shared\obj\Debug\net8.0\HomerBlazor.Shared.csproj.AssemblyReference.cache
+C:\src\Blazing_Homer\src\HomerBlazor.Shared\obj\Debug\net8.0\HomerBlazor.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\src\Blazing_Homer\src\HomerBlazor.Shared\obj\Debug\net8.0\HomerBlazor.Shared.AssemblyInfoInputs.cache
+C:\src\Blazing_Homer\src\HomerBlazor.Shared\obj\Debug\net8.0\HomerBlazor.Shared.AssemblyInfo.cs
+C:\src\Blazing_Homer\src\HomerBlazor.Shared\obj\Debug\net8.0\HomerBlazor.Shared.csproj.CoreCompileInputs.cache
+C:\src\Blazing_Homer\src\HomerBlazor.Shared\obj\Debug\net8.0\HomerBlazor.Shared.sourcelink.json
+C:\src\Blazing_Homer\src\HomerBlazor.Shared\obj\Debug\net8.0\HomerBla.0EBE835D.Up2Date
+C:\src\Blazing_Homer\src\HomerBlazor.Shared\obj\Debug\net8.0\HomerBlazor.Shared.dll
+C:\src\Blazing_Homer\src\HomerBlazor.Shared\obj\Debug\net8.0\refint\HomerBlazor.Shared.dll
+C:\src\Blazing_Homer\src\HomerBlazor.Shared\obj\Debug\net8.0\HomerBlazor.Shared.pdb
+C:\src\Blazing_Homer\src\HomerBlazor.Shared\obj\Debug\net8.0\ref\HomerBlazor.Shared.dll

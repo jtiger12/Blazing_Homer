@@ -1,0 +1,8 @@
+C:\src\Blazing_Homer\tests\HomerBlazor.Tests\bin\Debug\net8.0\CoverletSourceRootsMapping_HomerBlazor.Tests
+C:\src\Blazing_Homer\tests\HomerBlazor.Tests\obj\Debug\net8.0\HomerBlazor.Tests.csproj.AssemblyReference.cache
+C:\src\Blazing_Homer\tests\HomerBlazor.Tests\obj\Debug\net8.0\MvcTestingAppManifest.json
+C:\src\Blazing_Homer\tests\HomerBlazor.Tests\obj\Debug\net8.0\HomerBlazor.Tests.GeneratedMSBuildEditorConfig.editorconfig
+C:\src\Blazing_Homer\tests\HomerBlazor.Tests\obj\Debug\net8.0\HomerBlazor.Tests.AssemblyInfoInputs.cache
+C:\src\Blazing_Homer\tests\HomerBlazor.Tests\obj\Debug\net8.0\HomerBlazor.Tests.AssemblyInfo.cs
+C:\src\Blazing_Homer\tests\HomerBlazor.Tests\obj\Debug\net8.0\HomerBlazor.Tests.csproj.CoreCompileInputs.cache
+C:\src\Blazing_Homer\tests\HomerBlazor.Tests\obj\Debug\net8.0\HomerBlazor.Tests.sourcelink.json
