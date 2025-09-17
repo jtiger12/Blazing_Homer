@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HomerBlazor.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2a7e93e6b4ac2de571627276b5ff527f14be5d54")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7a4b79e0187e9588af9c2bd4a14728c003276e3c")]
 [assembly: System.Reflection.AssemblyProductAttribute("HomerBlazor.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HomerBlazor.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
